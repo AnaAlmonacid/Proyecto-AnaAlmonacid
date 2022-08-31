@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-container {
+  background-color: black;
+  color: white;
+  text-shadow: #282c34;
+  display: flex;
+  justify-content: left;
+}
+
+.App-logo {
+  justify-content: left;
+  max-width: 100px;
+  position: relative;
+  float: inline-start;
+  margin: 0%;
+  top: -93px;
+}
+
+.titulo {
+  display: flex;
+  justify-content: left;
+  font-size: 30px;
+}
+
+.navbarContainer{
+  background-color: black;
+  color: white;
+  padding: 1px;
+  text-align:end;
+}
+
+.navBarItems{
+  color: #f2f2f2;
+  font-size: 19px;
+  padding-bottom: 25px;
+  padding-right: 30px;
+}
+
+.item{
+  margin-right: 40px;
+}
+
+

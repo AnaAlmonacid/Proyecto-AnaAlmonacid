@@ -1,4 +1,4 @@
-const Item = (product, price, image) => {
+const Item = ({product, price, image}) => {
     return (
     <div>
         <img width={'180px'} src={image} alt='Imagen Producto'/>

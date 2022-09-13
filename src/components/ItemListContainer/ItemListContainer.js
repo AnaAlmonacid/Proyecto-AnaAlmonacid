@@ -4,7 +4,7 @@ import ItemList from "../ItemList/ItemList"
 
 const ItemListContainer = ({}) => {
 
-    const [productList, setProductList] = useState({})
+    const [productList, setProductList] = useState([])
 
     useEffect(() =>{
         getProduct.then((response)=> {

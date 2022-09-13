@@ -13,9 +13,9 @@ const data = [
     },     
     {
         id: '3',
-        product: 'Musculosa Beige',
+        product: 'Remera blanca',
         price: 2000,
-        image: '//http2.mlstatic.com/D_NQ_NP_873870-MLA48241939983_112021-W.webp,'
+        image: 'https://http2.mlstatic.com/D_NQ_NP_888443-MLA43817584271_102020-W.jpg'
     },     
     {
         id: '4',

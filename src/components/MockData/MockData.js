@@ -10,19 +10,20 @@ const data = [
         product: 'Remera negra',
         price: 2500,
         image: '//http2.mlstatic.com/D_NQ_NP_871389-MLA44055880756_112020-W.webp',
-    },     
+    },   
     {
         id: '3',
+        product: 'Remera Rosa',
+        price: 2200,
+        image: '//http2.mlstatic.com/D_NQ_NP_932841-MLA50220342577_062022-W.webp',
+    },   
+    {
+        id: '4',
         product: 'Remera blanca',
         price: 2000,
         image: 'https://http2.mlstatic.com/D_NQ_NP_888443-MLA43817584271_102020-W.jpg'
     },     
-    {
-        id: '4',
-        product: 'Remera Rosa',
-        price: 2200,
-        image: '//http2.mlstatic.com/D_NQ_NP_932841-MLA50220342577_062022-W.webp',
-    }, 
+
 ]
 
 export default data

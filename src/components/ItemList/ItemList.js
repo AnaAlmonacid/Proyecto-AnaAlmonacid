@@ -1,19 +1,19 @@
 import Item from "../Item/Item"
+import { Link } from "react-router-dom";
 
 const ItemList = ({lista}) => {
-    
-        return (
+
+    return (
         <div>
             {
             lista.map((product)=>{
-            return(
+            <Link key= {product.id} style={{textDecoration: 'none'}} to={'/detail/'+Item.id}>
                 <Item   
-                key={product.id}
-                title= {product.title}
+                title= {product.title}  
                 price= {product.price} 
                 image= {product.image}
                 />
-                );
+            </Link>
             })}
         </div>
     );

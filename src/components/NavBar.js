@@ -1,5 +1,6 @@
 import logo from '../logo.svg';
 import CartWidget from './CartWidget/CartWidget';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -7,11 +8,11 @@ const NavBar = () => {
             <div className='navBarItems'>
                 <img src={logo} className="App-logo" alt="logo"/>
                 <h1 className='titulo'>Mi Tienda</h1>
-                <a class="item" href="#home">Home</a>
-                <a class="item" href="#news">News</a>
-                <a class="item" href="#contact">Contact</a>
-                <a class="item" href="#about">About</a>
-                <a class="item" href="#cart"><CartWidget/></a>
+                <li><Link to={"/Home"}>Home</Link></li>
+                <li><Link to={"/Contact"}>Contact</Link></li>
+                <li><Link to={"/About"}>About</Link></li>
+                <li><Link to={"/News"}>News</Link></li>
+                <a class="item"><CartWidget/></a>
             </div>
         </div> 
     )

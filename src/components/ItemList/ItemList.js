@@ -6,12 +6,13 @@ const ItemList = ({lista}) => {
     return (
         <div>
             {
-            lista.map((product)=>{
-            <Link key= {product.id} style={{textDecoration: 'none'}} to={'/detail/'+Item.id}>
+            lista.map((product) => {
+            <Link key= {product.id} to={'/detail/'+Item.id} style={{textDecoration: 'none'}} >
                 <Item   
                 title= {product.title}  
-                price= {product.price} 
                 image= {product.image}
+                price= {product.price} 
+                detail= {product.detail} 
                 />
             </Link>
             })}

@@ -18,10 +18,13 @@ const ItemDetailContainer = () =>{
                 resolve(data.find(()=> data.id === '1'));
             } , 2000);
         });
-    return (
-        <>
-            <ItemDetail product={getDetail}/>
-        </>
+    return (       
+    <>  
+        {ProductDetail 
+        ? (<ItemDetail product={ProductDetail}/>) 
+        : (<h3>...</h3>) 
+        }  
+    </>
     );
 };
 export default ItemDetailContainer;

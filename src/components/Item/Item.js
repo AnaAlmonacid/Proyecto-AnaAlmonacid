@@ -1,9 +1,12 @@
-const Item = ({product, price, image}) => {
+const Item = ({product, price, image, detail}) => {
     return (
     <div>
-        <img width={'180px'} src={image} alt='Imagen Producto'/>
+        <div><img src={image} width={'180px'} alt='Imagen Producto'/></div>
+        <div>
         <h3>{product}</h3>
-        <h4>{price}</h4>
+        <h4>${price}</h4>
+        <h4>{detail}</h4>
+        </div>
     </div>
     )
 }

@@ -8,13 +8,13 @@ const NavBar = () => {
             <div className='navBarItems'>
                 <img src={logo} className="App-logo" alt="logo"/>
                 <h1 className='titulo'>Mi Tienda</h1>
-                <li><Link to={"/Home"}>Home</Link></li>
+{/*                 <li><Link to={"/Home"}>Home</Link></li>
                 <li><Link to={"/Contact"}>Contact</Link></li>
                 <li><Link to={"/About"}>About</Link></li>
-                <li><Link to={"/News"}>News</Link></li>
-                <a class="item"><CartWidget/></a>
-            </div>
-        </div> 
+                <li><Link to={"/News"}>News</Link></li> */}
+                <CartWidget/>
+                </div> 
+            </div> 
     )
 }
 

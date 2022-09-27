@@ -12,21 +12,24 @@ function App() {
 
   return (
     <div className="App">
-    <NavBar/>      
+{/*     <CartProvider> */}
     <BrowserRouter>
+    <NavBar/>      
       <Routes>
-        <Route path="/" element={<ItemListContainer/>}/>
-        <Route path="Home" element={<div>Home</div>}/>
-        <Route path="Contact" element={<div>Contact</div>}/>
-        <Route path="About" element={<div>About</div>}/>
-        <Route path="News" element={<div>News</div>}/>
-        <Route path="detail/:id" element={<ItemDetailContainer/>}/>
-        <Route path="item/:id" element={<ItemDetailContainer/>}/>
+        <Route path="/" element={<ItemListContainer/>}></Route>
+        <Route path="Home" element={<div>Home</div>}></Route>
+        <Route path="Contact" element={<div>Contact</div>}></Route>
+        <Route path="About" element={<div>About</div>}></Route>
+        <Route path="News" element={<div>News</div>}></Route>
+        <Route path='category/:category' element={<ItemListContainer/>}></Route>
+        <Route path="item/:id" element={<ItemDetailContainer/>}></Route>
       </Routes>
-    </BrowserRouter>
       <ItemListContainer getProduct/>
       <ItemCount stock={7} initial={1} onAdd={handleOnAdd} />
       <ItemDetailContainer/>
+    </BrowserRouter>
+{/*     </CartProvider> */}
+
     </div>
   );
 }

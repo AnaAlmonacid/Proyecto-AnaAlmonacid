@@ -1,7 +1,7 @@
 const Item = ({product, price, image, detail}) => {
     return (
     <div>
-        <div><img src={image} width={'180px'} alt='Imagen Producto'/></div>
+        <img src={image} width={'180px'} alt='Imagen Producto'/>
         <div>
         <h3>{product}</h3>
         <h4>${price}</h4>

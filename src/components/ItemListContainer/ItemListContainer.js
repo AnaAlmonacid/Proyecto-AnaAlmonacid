@@ -6,7 +6,7 @@ const ItemListContainer = ({}) => {
 
     const [productList, setProductList] = useState([])
 
-    useEffect(() =>{
+    useEffect(() => {
         getProduct.then((response)=> {
         setProductList(response)
         });
@@ -17,6 +17,7 @@ const ItemListContainer = ({}) => {
                 res(data);
             }, 2000);
         });
+
     return (
         <>
         <ItemList lista= {productList}/>

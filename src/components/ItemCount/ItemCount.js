@@ -18,7 +18,6 @@ const ItemCounter = ({stock, initial, onAdd}) => {
 
   return (
     <div>
-      ItemCounter
       <h4>{InitialState}</h4>
       <button onClick={suma}>+1</button>
       <button onClick={resta}>-1</button>

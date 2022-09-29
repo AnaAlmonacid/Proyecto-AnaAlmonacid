@@ -1,7 +1,7 @@
 import CartW from '../CartWidget/cart.png'
 import { useContext } from "react";
 import { cartContext } from '../Context/cartContext';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const CartWidget = (product) => {
@@ -11,8 +11,8 @@ const CartWidget = (product) => {
     )
 }
 
-<NavLink to={'/cart'}> 
-<img className="cartWidget" alt={"CartWidget"} src={CartW}/>
-</NavLink>
+<Link to={'/cart'}> 
+<img src={CartW} className="CartW" alt="CartWidget"/>
+</Link>
 
 export default CartWidget

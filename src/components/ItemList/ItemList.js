@@ -7,11 +7,10 @@ const ItemList = ({lista}) => {
         <div>
             {
             lista.map((product) => (
-            <Link key= {product.id} to={'/detail/'+Item.id} style={{textDecoration: 'none'}} >
-                <Item   
-                key= {product.id}
-                title={product.title}  
+            <Link key= {product.id} to={'/detail/'+Item.id} style={{textDecoration: 'none'}}>
+                <Item
                 image={product.image}
+                title={product.producto}  
                 price={product.price} 
                 detail={product.detail} 
                 />

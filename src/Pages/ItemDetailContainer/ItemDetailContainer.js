@@ -1,6 +1,6 @@
-import data from "../MockData/MockData";
+import data from "../../components/MockData/MockData";
 import { useEffect , useState } from "react";
-import ItemDetail from "../ItemDetail/ItemDetail";
+import ItemDetail from "../../components/ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () =>{
 

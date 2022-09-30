@@ -2,15 +2,20 @@ import data from "../../components/MockData/MockData";
 import { useEffect , useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-import { doc, getFirestore, getDoc } from "firebase/firestore"
+import { getFirestore, getDoc, collection } from "firebase/firestore"
 
 
 
 const ItemDetailContainer = () =>{
     
-    const db = getFirestore();
-    const queryDoc = doc(db, 'items', 'XdLjKaO2CE8lJO3jBRs8')
-    getDoc(queryDoc).then(res => {console.log(res.data)})
+const getProduct = () => {
+        const db = getFirestore();
+        const querySnapshot = collection(db, 'items');
+        getDoc(querySnapshot).then((response) => {
+            setProductDetail(response.data());
+    })
+        .catch((error) => console.log(error));
+    };
 
     const {id} = useParams ();
 

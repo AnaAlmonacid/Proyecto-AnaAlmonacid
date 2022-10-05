@@ -1,36 +1,50 @@
-/* import data from "../../components/MockData/MockData" */
-import { useEffect, useState } from "react"
-/* import ItemList from "../../components/ItemList/ItemList" */
-import { getFirestore, collection, getDocs } from "firebase/firestore"
+import { useParams } from "react-router-dom";
+import { useEffect , useState } from "react";
+import ItemList from "../../components/ItemList/ItemList";
+import {getFirestore , getDocs , collection , query, where} from 'firebase/firestore';
 
-const ItemListContainer = ({}) => {
 
-    const [productList, setProductList] = useState([])
+const ItemListContainer = () =>{
 
-    const getProduct = () => {
+    const {category} = useParams();
+    const [ProductList , setProductList] = useState([]);
+    
+    const getProducts = () => {
         const db = getFirestore();
-        const querySnapshot = collection(db, 'items');
-        getDocs(querySnapshot).then((response) => {
-            const data = response.docs.map((doc) => {
-                return doc.data();
+        const querySnapshot = collection(db,'product' );
+
+        if(category){
+            const queryFilter = query(querySnapshot , where('category' , '==', category));
+            getDocs(queryFilter)
+            .then((res) => {
+                console.log('response',res.docs);
+                const data = res.docs.map((doc) => {
+                    return {id: doc.id, ...doc.data()};
+                });
+                setProductList(data);
+            })
+            .catch((error) => console.log(error));
+        }
+        else{
+            getDocs(querySnapshot)
+            .then((res) => {
+            const data = res.docs.map((doc) => {
+                return {id: doc.id, ...doc.data()};
             });
-            setProductList(data);
-            console.log (getProduct)
-        });
-    }
+                setProductList(data);
+        })
+            .catch((error) => console.log(error));
+        }  
+    };
 
+        useEffect(() => {   
+            getProducts();
+        }, [category]);
         
-/*     useEffect(() => {
-        getProduct.then((response)=> {
-        setProductList(response)
-        });
-    }, []); */
-
-/*     return (
+    return (
         <>
-        <ItemList lista= {productList}/>
+            <ItemList lista={ProductList} />
         </>
-    ); */
+    );
 };
-
-export default ItemListContainer
+export default ItemListContainer;

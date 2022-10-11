@@ -13,7 +13,7 @@ const ItemDetailContainer = () =>{
     
     
     useEffect(() => {
-       getDetail();
+        getDetail();
         } , [id]);
 
     const getDetail = () => {
@@ -29,9 +29,8 @@ const ItemDetailContainer = () =>{
         <>  
             {ProductDetail 
             ? (<ItemDetail detalle={ProductDetail}/>) 
-            
             : (<h3>...</h3>) 
-             }  
+            }  
         </>
     );
 };

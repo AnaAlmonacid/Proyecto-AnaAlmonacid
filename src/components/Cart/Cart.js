@@ -10,10 +10,10 @@ const Cart = () => {
     const createOrder = () =>{
         const db = getFirestore();
         const order = {
-        Buyer: {
-            Name: "Pablo",
-            Email: "Pablo@buyer.com.ar",
-            Phone: 3416621453,
+        buyer: {
+            name: "pablo",
+            email: "pablo@buyer.com.ar",
+            phone: "3416621453",
         },
         items: cart,
         total: cart.reduce((prev , valorActual) => 

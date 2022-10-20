@@ -1,37 +1,24 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
-import ItemListContainer from "./Pages/ItemListContainer/ItemListContainer";
-import ItemCount from "./components/ItemCount/ItemCount";
-import ItemDetailContainer from "./Pages/ItemDetailContainer/ItemDetailContainer";
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import { CartProvider } from "./components/Context/CartProvider";
-import Cart from './components/Cart/Cart';
+import NavBar from "./Component/NavBar";
+import ProductList from "./Component/Products/ProductList";
+import { BrowserRouter} from "react-router-dom";
+import Paginas from "./Component/Paginas/Paginas";
+import { DataProvider } from "./Component/Context/DataProvider";
+import Cart from "./Component/Cart/Cart";
 
 
-function App() {
-  const handleOnAdd = (cantidad) => {
-    alert(`Agregaste ${cantidad} al carrito`);
-  };
-
+const App = () => {
   return (
+    <DataProvider>
     <div className="App">
-    <CartProvider>
-      <BrowserRouter>
-      <NavBar/>      
-        <Routes>
-          <Route path="/" element={<ItemListContainer/>}></Route>
-          <Route path="Home" element={<div>Home</div>}></Route>
-          <Route path="Contact" element={<div>Contact</div>}></Route>
-          <Route path="About" element={<div>About</div>}></Route>
-          <Route path="News" element={<div>News</div>}></Route>
-          <Route path='category/:category' element={<ItemListContainer/>}></Route>
-          <Route path="detail/:id" element={<ItemDetailContainer/>}></Route>
-          <Route path='cart' element={<Cart/>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
+    <BrowserRouter>   
+    <NavBar/>
+    <Cart/>
+    <Paginas/>
+    </BrowserRouter>
     </div>
-  );
+    </DataProvider>
+  )
 }
 
-export default App;
+export default App

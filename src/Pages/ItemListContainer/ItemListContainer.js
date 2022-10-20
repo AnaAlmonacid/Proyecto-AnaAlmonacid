@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+/* import { useParams } from "react-router-dom";
 import { useEffect , useState } from "react";
 import ItemList from "../../components/ItemList/ItemList";
 import {getFirestore , getDocs , collection , query, where} from 'firebase/firestore';
@@ -47,4 +47,4 @@ const ItemListContainer = () =>{
         </>
     );
 };
-export default ItemListContainer;
+export default ItemListContainer; */

@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
-
 import { DataContext } from '../Context/DataProvider'
 import Products from './Products'
-
 
 
 const ProductList = () => {
@@ -27,7 +25,6 @@ const ProductList = () => {
                 stock={product.stock}
                 />))
             }
-
         </div>
     </div>
   )

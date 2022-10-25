@@ -14,7 +14,7 @@ useEffect(()=> {
 
 const value = {
     products : [products],
-    menu : [menu, setMenu]
+
 }
 
     return (

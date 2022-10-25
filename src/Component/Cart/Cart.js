@@ -1,15 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import foto from '../../Images/BabyYoda.jpg'
-import { DataContext } from '../Context/DataProvider'
-
-
-
 const Cart = () => {
-
-    const value = useContext(DataContext)
-
-    const [menu, setMenu] = value.menu
-
     return (
         <div className='cart'>
             <div className='cartClose'>
@@ -22,8 +13,8 @@ const Cart = () => {
             </div>
             <div className='cartItem'>
                 <img src={foto} alt="foto"/>
-                    <h3>title</h3>
-                    <p>$price</p>
+                    <h3>Title</h3>
+                    <p>$Price</p>
             </div>
 
             <div className='cartPlus'>

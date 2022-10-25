@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
     return (
         <div className = "navbarContainer">
-            
             <div className='navBarItems'>
                     <div className='navBarItem'><Link to="/Inicio">Inicio</Link></div>
                     <Link to={'#'}><img src={logo} className="App-logo" alt="logo"/></Link>

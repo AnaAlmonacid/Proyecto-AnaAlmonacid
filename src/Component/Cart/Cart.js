@@ -1,35 +1,68 @@
-import React from 'react'
-import foto from '../../Images/BabyYoda.jpg'
+import { useContext } from "react"
+import { cartContext } from "../Context/cartContext"
+import { Link } from "react-router-dom";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
+import Swal from "sweetalert2";
+
+
 const Cart = () => {
+    const {cart, removeProduct} = useContext(cartContext);
+    console.log('cart', cart);
+
+    const createOrder = () =>{
+    const db = getFirestore();
+    const order = {
+        buyer: {
+        name:'User',
+        phone: '+541234567',
+        email: 'test@test.com',
+        },
+        items: cart,
+        total: cart.reduce((prev , valorActual) => 
+      prev + valorActual.price * valorActual.cantidad, 
+        0)
+    };
+    const queryOrder = collection(db , 'orders');
+    addDoc(queryOrder, order)
+    .then(({id}) =>{
+    console.log(id);
+    Swal.fire(
+        'Compra Realizada con Exito.',
+        `Su numero de orden es ' ${id} ' `  ,
+        'success'
+        )
+    })
+    .catch((error) => 
+        Swal.fire({
+        icon: 'error',
+        title: ' :( ',
+        text: 'No se puedo realizar la orden.',
+    })
+    )
+    }
+
     return (
-        <div className='cart'>
-            <div className='cartClose'>
-                <p>X</p>
-            
+    <div>
+        <h2>Carrito</h2>
+        
+        <br></br>
+        
+        {cart.length === 0 ? (<div><h2>Carrito vacio</h2><Link to='/'><button>Comprar de nuevo</button></Link></div>): 
+        
+        cart.map((product) =>(
+            <div key={product.id} >
+                <h3>{product.title}</h3>
+                <img src={product.image} alt={product.title}/>                 
+                <p> $ {product.price}</p>
+                <p>{product.cantidad}</p>
+                <button onClick={()=> removeProduct(product.id)}>Eliminar Producto</button>
+                <div>
+                    <button onClick={createOrder}>Crear Orden</button>
+                </div>
             </div>
-            <h2>Cart</h2>
-            <div className='cartCart'>
-
-            </div>
-            <div className='cartItem'>
-                <img src={foto} alt="foto"/>
-                    <h3>Title</h3>
-                    <p>$Price</p>
-            </div>
-
-            <div className='cartPlus'>
-                <p>+</p>
-            </div> 
-
-            <div className='cartMinus'>
-                <p>-</p>
-            </div>
-
-            <div className='cartTrash'>
-                <p>Eliminar producto</p>
-            </div>
-
-            </div>
+        ))   
+        }
+    </div>
     )
 }
 

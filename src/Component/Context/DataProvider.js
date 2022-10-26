@@ -1,25 +1,55 @@
-import React, {useState, useEffect, createContext} from "react";
-import data from "../MockData/MockData";
+import { cartContext } from "./cartContext";
+import { useState } from "react";
 
-export const DataContext = createContext();
+export const DataProvider = ({ children }) => {
+    const [cart, setCart] = useState([]);
 
-export const DataProvider = (props) => {
-    const [products, setProducts] = useState ([])
+    const addToCart = (producto, cantidad) => {
+        console.log(producto, cantidad)
+        const isInCart = cart.find(
+            (productInCart) => productInCart.id === producto.id
+        );
 
-useEffect(()=> {
-    const product = data.items
-    if (product) {}
-    setProducts (product)
-}, [])
+        if (isInCart) {
+            setCart(
+                cart.map((productInCart) => {
+                    if (productInCart.id === producto.id) {
+                        return { ...isInCart, cantidad: isInCart.cantidad + 1 };
+                    } else return productInCart;
+                })
+            );
+        }
 
-const value = {
-    products : [products],
+        else {
+            setCart([...cart, { ...producto, cantidad: 1 }]);
+        }
 
-}
+    };
 
+    const removeProduct = (productId) => {
+        let newArray = []
+        cart.forEach((product) => {
+            if (product.id === productId) {
+                console.log(product);
+            } else {
+                newArray.push(product)
+            }
+        })
+        setCart(newArray)
+
+    };
+    const clearCart = () => {
+        setCart([]);
+    };
+    const totalProducts = () => {
+        return cart.reduce((prev, cartProduct) => prev + cartProduct.cantidad, 0);
+    }
+    const totalPrice = () => {
+        return cart.reduce ((prev,cartPrice) => prev + cartPrice.cantidad * cartPrice.price , 0);
+    }
     return (
-        <DataContext.Provider value = {value}>
-            {props.children}
-        </DataContext.Provider>
+        <cartContext.Provider value={{ cart, addToCart, removeProduct, clearCart, totalProducts, totalPrice }}>
+            {children}
+        </cartContext.Provider>
     )
-}
+};

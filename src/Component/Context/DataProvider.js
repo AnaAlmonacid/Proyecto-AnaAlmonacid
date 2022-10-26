@@ -1,55 +1,25 @@
-import { cartContext } from "./cartContext";
-import { useState } from "react";
+import React, {useState, useEffect, createContext} from "react";
+import data from "../MockData/MockData";
 
-export const DataProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+export const DataContext = createContext();
 
-    const addToCart = (producto, cantidad) => {
-        console.log(producto, cantidad)
-        const isInCart = cart.find(
-            (productInCart) => productInCart.id === producto.id
-        );
+export const DataProvider = (props) => {
+    const [products, setProducts] = useState ([])
 
-        if (isInCart) {
-            setCart(
-                cart.map((productInCart) => {
-                    if (productInCart.id === producto.id) {
-                        return { ...isInCart, cantidad: isInCart.cantidad + 1 };
-                    } else return productInCart;
-                })
-            );
-        }
+useEffect(()=> {
+    const product = data.items
+    if (product) {}
+    setProducts (product)
+}, [])
 
-        else {
-            setCart([...cart, { ...producto, cantidad: 1 }]);
-        }
+const value = {
+    products : [products],
 
-    };
+}
 
-    const removeProduct = (productId) => {
-        let newArray = []
-        cart.forEach((product) => {
-            if (product.id === productId) {
-                console.log(product);
-            } else {
-                newArray.push(product)
-            }
-        })
-        setCart(newArray)
-
-    };
-    const clearCart = () => {
-        setCart([]);
-    };
-    const totalProducts = () => {
-        return cart.reduce((prev, cartProduct) => prev + cartProduct.cantidad, 0);
-    }
-    const totalPrice = () => {
-        return cart.reduce ((prev,cartPrice) => prev + cartPrice.cantidad * cartPrice.price , 0);
-    }
     return (
-        <cartContext.Provider value={{ cart, addToCart, removeProduct, clearCart, totalProducts, totalPrice }}>
-            {children}
-        </cartContext.Provider>
+        <DataContext.Provider value = {value}>
+            {props.children}
+        </DataContext.Provider>
     )
-};
+}
